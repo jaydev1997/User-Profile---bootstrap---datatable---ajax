@@ -56,6 +56,6 @@ gem "font-awesome-rails"
 
 
 gem 'jquery-rails'
-gem 'jquery-datatables-rails'
-gem 'jquery-ui-rails'
+# gem 'jquery-datatables-rails'
+# gem 'jquery-ui-rails'
 gem 'will_paginate'
