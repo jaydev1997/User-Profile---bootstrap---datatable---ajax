@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap'
 gem 'simple_form'
 gem "responders"
 
@@ -51,11 +51,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'jquery-rails'
+
 gem 'bootstrap-datepicker-rails'
 gem "font-awesome-rails"
 
 
-gem 'jquery-rails'
-# gem 'jquery-datatables-rails'
-# gem 'jquery-ui-rails'
+gem 'jquery-datatables-rails'
+gem 'jquery-ui-rails'
 gem 'will_paginate'

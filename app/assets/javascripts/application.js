@@ -15,6 +15,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
+//= require dataTables/jquery.dataTables
 //= require_tree .
 
 jQuery(function() {
