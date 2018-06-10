@@ -23,7 +23,10 @@ class UsersDatatable
           user.email,
           user.mobile,
           user.age,
-          user.dob.strftime("%e %b %Y"),
+          user&.dob&.strftime("%e %b %Y"),
+          link_to('Edit', "/users/#{user.id}/edit", 'data-modal' => true),
+          link_to('Delete', "/users/#{user.id}/", 'method' => 'delete', 'data-confirm' => "Are you sure?")
+
       ]
     end
   end

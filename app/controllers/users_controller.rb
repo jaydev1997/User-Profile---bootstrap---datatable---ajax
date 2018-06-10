@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   def index
     respond_to do |format|
@@ -20,19 +20,27 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+    respond_modal_with @user
+  end
+
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
+    @user.save!
     respond_modal_with @user, location: users_path
   end
 
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.js do
+          render file: '/users/update.js.erb'
+        end
+
+
+        # respond_modal_with @user, location: users_path
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        # respond_modal_with @user, location: users_path
       end
     end
   end
@@ -50,7 +58,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :mobile, :age, :dob,
-                                   location_attributes: [ :address, :location_name, :phone_number, :district, :city, :postcode, :country, :lat, :long])
+      params.require(:user).permit(:first_name, :last_name,
+                                   :email, :mobile, :age, :dob,
+                                   locations_attributes: [ :address, :location_name, :phone_number,
+                                                           :district, :city, :postcode, :country, :lat, :long]
+                                   )
     end
 end

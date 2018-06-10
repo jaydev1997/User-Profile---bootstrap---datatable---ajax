@@ -1,36 +1,20 @@
-
-<%= simple_form_for(@user, remote: request.xhr?, html: { data: { modal: true } }) do |f| %>
+<%= simple_form_for(@user, remote: request.xhr?, html: { data: { modal: true } }) do |user| %>
   <div class="modal-body">
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= f.input :mobile %>
-    <%= f.input :age %>
+    <%= user.input :first_name %>
+    <%= user.input :last_name %>
+    <%= user.input :email %>
+    <%= user.input :mobile %>
+    <%= user.input :age %>
     <div class="form-group">
-    <%= f.label  'Date of Birth' %>
-    <%= f.text_field :dob, data:{ provide:'datepicker' }, :id => "datepicker", :class => "form-control" %>
+    <%= user.label  'Date of Birth' %>
+    <%= user.text_field :dob, data:{ provide:'datepicker' }, :id => "datepicker", :class => "form-control" %>
     </div>
 
-    <%= render partial: "locations/form"  %>
+    <%= render partial: "locations/form" , locals: { user: user } %>
 
   </div>
 
-<!--  <div class="modal-footer">-->
-    <%#= f.button :submit, class: 'btn-success' %>
-<!--  </div>-->
+  <div class="modal-footer">
+    <%= user.button :submit, class: 'btn-success' %>
+  </div>
 <% end %>
-
-<!--<script>-->
-<!--    jQuery(function() {-->
-<!--        var completer;-->
-
-<!--        completer = new GmapsCompleter({-->
-<!--            inputField: '#gmaps-input-address',-->
-<!--            errorField: '#gmaps-error'-->
-<!--        });-->
-
-<!--        completer.autoCompleteInit({-->
-<!--            country: "us"-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->

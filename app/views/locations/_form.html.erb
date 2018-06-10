@@ -1,23 +1,40 @@
-<%= form_for(@location || Location.new, html: { class: "form-horizontal" }) do |f| %>
+<%= user.fields_for :locations do |location| %>
 
-          <%= f.hidden_field :address %>
-          <%= f.hidden_field  :location_name %>
-          <%= f.hidden_field  :phone_number %>
-          <%= f.hidden_field  :district %>
-          <%= f.hidden_field  :postcode %>
-          <%= f.hidden_field  :city %>
-          <%= f.hidden_field  :country %>
-          <%= f.hidden_field  :lat %>
-          <%= f.hidden_field  :lng %>
+  <%= location.hidden_field :address %>
+  <%= location.hidden_field  :location_name %>
+  <%= location.hidden_field  :phone_number %>
+  <%= location.hidden_field  :district %>
+  <%= location.hidden_field  :postcode %>
+  <%= location.hidden_field  :city %>
+  <%= location.hidden_field  :country %>
+  <%= location.hidden_field  :lat %>
+  <%= location.hidden_field  :lng %>
 
   <div class="form-group">
-  <%= label_tag :search, "Address", class: "string" %>
-  <%= text_field_tag :location_search, nil, class: "span12 search-query form-control", type: "search" %>
+    <%= label_tag :search, "Address", class: "string" %>
+    <%= text_field_tag :location_search, nil, class: "span12 search-query form-control", type: "search" %>
   </div>
 
-  <div class="modal-footer">
-  <%= f.submit "Create User", class: 'btn-success btn' %>
-  </div>
+<!--  <div class="modal-footer">-->
+    <%#= location.submit "Create User", class: 'btn-success btn' %>
+<!--  </div>-->
       <%= render partial: "googlemap" %>
 
 <% end %>
+
+
+<style>
+  .pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+  }
+  .modal{
+    z-index: 20;
+  }
+  .modal-backdrop{
+    z-index: 10;
+  }​
+</style>
