@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     respond_modal_with @user
   end
 
+  def show
+  end
+
   def create
     @user = User.create(user_params)
     respond_modal_with @user, location: users_path

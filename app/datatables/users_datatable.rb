@@ -19,7 +19,7 @@ class UsersDatatable
   def data
     users.map do |user|
       [
-          user.first_name + ' ' + user.last_name,
+          link_to(user.first_name + ' ' + user.last_name, user),
           user.email,
           user.mobile,
           user.age,

@@ -52,6 +52,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
+# gem 'gmaps-autocomplete-rails'
 
 gem 'bootstrap-datepicker-rails'
 gem "font-awesome-rails"
