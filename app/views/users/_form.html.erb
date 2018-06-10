@@ -7,12 +7,18 @@
     <%= f.input :age %>
     <%= f.label  'Date of Birth' %>
     <%= f.text_field :dob, data:{ provide:'datepicker' }, :id => "datepicker", :class => "form-control" %>
+
+
+    <%= render partial: "locations/form"  %>
+
   </div>
 
   <div class="modal-footer">
     <%= f.button :submit, class: 'btn-success' %>
   </div>
 <% end %>
+
+
 
 
 <!--<script>-->

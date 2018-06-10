@@ -12,7 +12,9 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.locations.new
     respond_modal_with @user
+    # this is needed to seed the form with inputs for source
   end
 
   def show
@@ -48,6 +50,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :mobile, :age, :dob)
+      params.require(:user).permit(:first_name, :last_name, :email, :mobile, :age, :dob,
+                                   location_attributes: [ :address, :location_name, :phone_number, :district, :city, :postcode, :country, :lat, :long])
     end
 end

@@ -8,5 +8,5 @@ class User < ApplicationRecord
   validates :mobile,:presence => true,
             :numericality => true,
             :length => { :minimum => 10, :maximum => 15 }
-
+  accepts_nested_attributes_for :locations
 end
