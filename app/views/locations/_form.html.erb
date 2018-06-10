@@ -1,4 +1,4 @@
-<%= form_for(@location, html: { class: "form-horizontal" }) do |f| %>
+<%= form_for(@location || Location.new, html: { class: "form-horizontal" }) do |f| %>
 
           <%= f.hidden_field :address %>
           <%= f.hidden_field  :location_name %>
@@ -10,25 +10,14 @@
           <%= f.hidden_field  :lat %>
           <%= f.hidden_field  :lng %>
 
-        <%= f.submit "Save Location", class: 'btn' %>
+  <div class="form-group">
+  <%= label_tag :search, "Address", class: "string" %>
+  <%= text_field_tag :location_search, nil, class: "span12 search-query form-control", type: "search" %>
+  </div>
 
-    <div class="span7">
-      <% if @location.errors.any? %>
-        <div class="notice">
-          <h3>Errors</h2>
-          <ul>
-          <% @location.errors.full_messages.each do |msg| %>
-            <li class="error"><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-
-        <%= label_tag :search, "Search For Address" %>
-        <%= text_field_tag :location_search, nil, class: "span12 search-query", type: "search" %>
-
-
+  <div class="modal-footer">
+  <%= f.submit "Create User", class: 'btn-success btn' %>
+  </div>
       <%= render partial: "googlemap" %>
 
 <% end %>
