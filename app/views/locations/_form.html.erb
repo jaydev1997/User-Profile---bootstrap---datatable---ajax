@@ -1,21 +1,13 @@
 <%= form_for(@location, html: { class: "form-horizontal" }) do |f| %>
 
           <%= f.hidden_field :address %>
-
           <%= f.hidden_field  :location_name %>
-
           <%= f.hidden_field  :phone_number %>
-
           <%= f.hidden_field  :district %>
-
           <%= f.hidden_field  :postcode %>
-
           <%= f.hidden_field  :city %>
-
           <%= f.hidden_field  :country %>
-
           <%= f.hidden_field  :lat %>
-
           <%= f.hidden_field  :lng %>
 
         <%= f.submit "Save Location", class: 'btn' %>
