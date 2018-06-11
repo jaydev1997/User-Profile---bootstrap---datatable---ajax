@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <h5 class="modal-title">User</h5>
+  <a href="<%= root_url %>">
+    <span>
+      <i class="fa fa-chevron-circle-left"></i>
+      Back to Home
+    </span>
+  </a>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <% user = @user.locations.first %>
+    <div class="modal-body">
+
+      <b>Full Name:</b>
+      <%= @user.first_name + ' ' + @user.last_name %>
+      </p>
+
+      <p>
+        <b>Email:</b>
+        <%= @user.email %>
+      </p>
+
+      <p>
+        <b>Mobile:</b>
+        <%= @user.mobile %>
+      </p>
+
+      <p>
+        <b>Date of Birth:</b>
+        <%= @user.dob %>
+      </p>
+
+      <p>
+        <b>Address:</b>
+        <%=  user.location_name + ', ' +  user.address + ', ' + user.district + ', ' +  user.country + '- ' + user.postcode %>
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <%= render :partial => "googlemap_show" %>
+
+  </div>
+
+</div>
+
+
+
+
+<div class="modal-footer">
+</div>

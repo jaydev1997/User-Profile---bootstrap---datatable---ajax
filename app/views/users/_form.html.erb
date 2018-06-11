@@ -1,20 +1,36 @@
 <%= simple_form_for(@user, remote: request.xhr?, html: { data: { modal: true } }) do |user| %>
   <div class="modal-body">
-    <%= user.input :first_name %>
-    <%= user.input :last_name %>
-    <%= user.input :email %>
-    <%= user.input :mobile %>
-    <%= user.input :age %>
-    <div class="form-group">
-    <%= user.label  'Date of Birth' %>
-    <%= user.text_field :dob, data:{ provide:'datepicker' }, :id => "datepicker", :class => "form-control" %>
+
+    <div class="row">
+
+      <div class="col-md-6" >
+      <%= user.input :first_name %>
+      <%= user.input :email %>
+      <%= user.input :mobile %>
+        <%= render partial: "locations/form" , locals: { user: user } %>
+      </div>
+
+      <div class="col-md-6">
+        <%= user.input :last_name %>
+        <%= user.input :age %>
+        <div class="form-group">
+          <%= user.label  'Date of Birth' %>
+          <%= user.text_field :dob, data:{ provide:'datepicker' }, :id => "datepicker", :class => "form-control" %>
+        </div>
+
+      </div>
+
     </div>
-
-    <%= render partial: "locations/form" , locals: { user: user } %>
-
   </div>
 
   <div class="modal-footer">
     <%= user.button :submit, class: 'btn-success' %>
   </div>
 <% end %>
+
+<script>
+    $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+    $('.datepicker').datepicker({
+        startDate: '-3d'
+    });
+</script>

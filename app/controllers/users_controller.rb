@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save!
+    @user.save
     respond_modal_with @user, location: users_path
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name,
                                    :email, :mobile, :age, :dob,
                                    locations_attributes: [ :address, :location_name, :phone_number,
-                                                           :district, :city, :postcode, :country, :lat, :long]
+                                                           :district, :city, :postcode, :country, :lat, :lng]
                                    )
     end
 end
